@@ -29,6 +29,6 @@ def test_selected_temperature_indices():
         ci.pre_process()
 
         # Test the selected temperature indices
-        assert isinstance(ci.calculate_tx10p(), xr.DataArray), "Failed to calculate tx10p."
+        assert isinstance(ci.calculate_tx10p(), xr.DataArray), "Failed to  calculate tx10p."
         assert isinstance(ci.calculate_frost_days(), xr.DataArray), "Failed to calculate frost days."
         assert isinstance(ci.calculate_warm_spell(), xr.DataArray), "Failed to calculate warm spell."
