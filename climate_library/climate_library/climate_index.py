@@ -41,13 +41,28 @@ class ClimateIndex:
             self.data = xr.open_dataset(self.datafile)
             print("Data loaded successfully.")
             
-            # # Check if units are in mm/day for precipitation
-            # if self.data.attrs.get('units') != 'mm/day':
-            #     raise ValueError("Units do not match. Expected units: mm/day")
-            
             if 'time' not in self.data.dims:
                 raise ValueError("Time dimension not found in the dataset.")
+            
             print("Time axis found.")
+            
+            # Initialize data_type as None
+            self.data_type = None
+            
+            # Infer data type based on units
+            for var in self.data.data_vars:
+                units = self.data[var].attrs.get('units', None)
+                if units:
+                    print(f"Data detected in variable {var}. Units are in {units}.")
+                    if units == 'K':
+                        self.data_type = 'temperature'
+                    elif units == 'm':
+                        self.data_type = 'precipitation'
+                    else:
+                        raise ValueError(f"Unsupported units {units}. Expected units are 'K' for temperature or 'm' for precipitation.")
+            
+            if self.data_type is None:
+                raise ValueError("Could not infer data type. Please check the units in the dataset.")
             
             if time_range:
                 start_time, end_time = time_range
@@ -61,6 +76,10 @@ class ClimateIndex:
             if season:
                 self.data = self.data.sel(time=self.data['time.season'] == season)
                 print("Season selection completed.")
+                
+                # Special resampling for DJF season
+                if season == 'DJF' and resample_freq is None:
+                    resample_freq = 'QS-DEC'
                 
             if resample_freq:
                 resampler = self.data.resample(time=resample_freq)
@@ -80,6 +99,7 @@ class ClimateIndex:
                 else:
                     print(f"Unknown method to fill missing values: {fill_missing}. Skipping this step.")
                 print("Missing values handling completed.")
+                
         except Exception as e:
             print(f"An error occurred while processing the data: {str(e)}")
 
