@@ -125,6 +125,10 @@ climate_index.pre_process(time_range=None, fill_missing=None, resample_freq=None
     - Other methods, such as `sum`, `max`, etc., can be specified if needed.
     - Use Case: This provides flexibility in how the data is aggregated when resampling, allowing for different types of analysis and interpretation.
 
+#### Additional Checks 
+- **Units Check**: The function also performs a check on the unit of the data variables. It supports 'K' for temperature and 'm' for precipitation.
+- **Special Rule**: If season is 'DJF', and `resample_freq` is not specified, it defaults to 'QS-DEC'.
+
 #### Example Usage
 
 ```python
