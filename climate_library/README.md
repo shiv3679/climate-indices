@@ -14,8 +14,13 @@ For temperature-related analyses, it can calculate indices such as:
 - **tn10p**: The percentage of days when daily minimum temperature is below the 10th percentile
 - **tn90p**: The percentage of days when daily minimum temperature is above the 90th percentile
 - **frost_days**: Number of frost days (when daily minimum temperature is below 0°C)
-- **warm_spell_duration_index**: Warm spell duration index
-- **cold_spell_duration_index**: Cold spell duration index
+- **warm_spell_duration_index**: The maximum length of a run of days with daily maximum temperature above the 90th percentile
+- **cold_spell_duration_index**: The maximum length of a run of days with daily minimum temperature below the 10th percentile.
+- **Diurnal Temperature Range (DTR)**: The mean monthly diurnal temperature range.
+- **Summer Days (SU)**: The annual count of days when daily maximum temperature is above 25°C.
+- **Icing Days (ID)**: The annual count of days when daily maximum temperature is below 0°C.
+- **Tropical Nights (TR)**: The annual count of days when daily minimum temperature is above 20°C.
+- **Growing Season Length (GSL)**: The length of the growing season in day
 
 ## Precipitation-related Indices
 
@@ -24,6 +29,9 @@ For precipitation-related analyses, it can calculate indices such as:
 - **percentile_p**: The sum of precipitation in wet days exceeding a given percentile during a time period
 - **precip_days**: The number of days with precipitation exceeding a specified threshold
 - **rxnday**: The highest n-day total precipitation amount for a given resampling frequency
+- **Consecutive Dry Days (CDD)**: The maximum length of dry spell in days.
+- **Consecutive Wet Days (CWD)**: The maximum length of wet spell in days.
+- **Simple Precipitation Intensity Index (SDII)**: The annual mean precipitation intensity on wet days.
 
 ## Testing
 
@@ -190,24 +198,70 @@ cold_spell_index = climate_index.calculate_cold_spell()
 - **Description**: Measures the duration of cold spells when daily minimum temperature falls below the 10th percentile for consecutive days.
 - **Calculation**: Length of periods falling below the 10th percentile of minimum temperature.
 
+##### Icing Days
+
+
+```python
+id_index = climate_index.calculate_id()
+```
+- **Description**: Counts the number of days when the maximum temperature falls below 0°C.
+- **Calculation**: Number of days when daily maximum temperature is below freezing (273.15 K).
+
+
+##### Summer Days
+
+
+```python
+su_index = climate_index.calculate_su()
+```
+- **Description**: Counts the number of days when the maximum temperature exceeds 25°C.
+- **Calculation**: Number of days when daily maximum temperature is above 25°C (298.15 K).
+
+##### Tropical Nights
+
+
+```python
+tr_index = climate_index.calculate_tr()
+```
+- **Description**: Counts the number of days when the minimum temperature exceeds 20°C.
+- **Calculation**: Number of days when daily minimum temperature is above 20°C (293.15 K).
+
+##### Growing Season Length (GSL)
+
+
+```python
+gsl_index = climate_index.calculate_gsl()
+```
+- **Description**: Calculates the length of the growing season in days.
+- **Calculation**: The growing season starts with the first run of at least 6 days where the daily mean temperature exceeds 5°C and ends with the first run of at least 6 days where the daily mean temperature falls below 5°C after July 1st.
+
+##### Diurnal Temperature Range (DTR)
+
+
+```python
+dtr_index = climate_index.calculate_dtr()
+```
+- **Description**: Calculates the mean monthly diurnal temperature range.
+- **Calculation**: The difference between the daily maximum and minimum temperature is averaged over each month.
+
 #### Precipitation Indices
 
 ##### Percentile Precipitation
 
 
 ```python
-rXXp_index_time_series, rXXp_days_count = climate_index.calculate_percentile_p(precip_var='tp', percentile=95, wet_day_thresh_mm=1.0, reference_period=('1961-01-01', '1990-12-31'), resample_freq='Y')
+rXXp_index_time_series = climate_index.calculate_percentile_p(precip_var='tp', percentile=95, wet_day_thresh_mm=1.0, reference_period=('1961-01-01', '1990-12-31'), resample_freq='Y')
 ```
 - **Description**: Calculates the sum of precipitation on days exceeding a specified percentile.
 - **Calculation**: Sum of precipitation on days exceeding the threshold defined by the percentile.
-- **Example**: To calculate the sum of precipitation on days exceeding the 95th percentile and the number of such days, with a wet day threshold of 1 mm, and reference period from 1961 to 1990, use percentile=95, wet_day_thresh_mm=1.0, reference_period=('1961-01-01', '1990-12-31').
+- **Example**: To calculate the sum of precipitation on days exceeding the 95th percentile, with a wet day threshold of 1 mm, and reference period from 1961 to 1990, use percentile=95, wet_day_thresh_mm=1.0, and reference_period=('1961-01-01', '1990-12-31').
 
 
 ##### Precipitation Days
 
 
 ```python
-precip_days_index = climate_index.calculate_precip_days(precip_var='tp', threshold_mm=10.0)
+precip_days_index = climate_index.calculate_precip_days(precip_var='tp', threshold_mm=10.0, resample_freq='Y')
 ```
 - **Description**: Counts the number of days with precipitation above a specified threshold.
 - **Calculation**: Number of days with precipitation exceeding the threshold.
@@ -216,11 +270,36 @@ precip_days_index = climate_index.calculate_precip_days(precip_var='tp', thresho
 ##### RXnDay
 
 ```python
-rxnday_index, heavy_precip_count = climate_index.calculate_rxnday(precip_var='tp', n_days=5, threshold_mm=50.0, resample_freq='Y')
+rxnday_index = climate_index.calculate_rxnday(precip_var='tp', n_days=5, resample_freq='M')
 ```
 - **Description**: Finds the maximum precipitation sum for a specified number of consecutive days.
 - **Calculation**: Maximum sum of precipitation for the defined number of consecutive days.
-- **Example**: To calculate the maximum 5-day consecutive precipitation sum and count the number of periods with more than 50 mm, use n_days=5, threshold_mm=50.0.
+- **Example**: To calculate the maximum 5-day consecutive precipitation sum, use n_days=5.
+
+##### Consecutive Wet Days (CWD)
+
+```python
+cwd_index = climate_index.calculate_cwd(precip_var='tp')
+```
+- **Description**: Calculates the maximum length of consecutive wet days in a year.
+- **Calculation**:Length of the longest sequence of wet days (precipitation equal to or greater than 1 mm).
+
+##### Consecutive Dry Days (CDD)
+
+```python
+cdd_index = climate_index.calculate_cdd(precip_var='tp')
+```
+- **Description**: Calculates the maximum length of consecutive dry days in a year.
+- **Calculation**:Length of the longest sequence of dry days (precipitation less than 1 mm).
+
+##### Simple Precipitation Intensity Index (SDII)
+
+```python
+sdii_index = climate_index.calculate_sdii(precip_var='tp')
+```
+- **Description**: Calculates the average precipitation intensity on wet days.
+- **Calculation**:Sum of precipitation on wet days (≥ 1 mm) divided by the total number of wet days in each year.
+
 
 These indices provide various ways to quantify temperature and precipitation extremes, trends, and variability, aiding in climate analysis, pattern recognition, and decision-making.
 
@@ -248,11 +327,19 @@ climate_index.test_indices(data_type='temperature')
   - `calculate_frost_days`
   - `calculate_warm_spell`
   - `calculate_cold_spell`
+  - `calculate_dtr`
+  - `calculate_su`
+  - `calculate_id`
+  - `calculate_tr`
+  - `calculate_gsl`
 
 - **Precipitation Testing**: If `data_type='precipitation'`, the following methods will be tested:
   - `calculate_percentile_p`
   - `calculate_precip_days`
   - `calculate_rxnday`
+  - `calculate_cdd`
+  - `calculate_cwd`
+  - `calculate_sdii`
 
 #### Example Usage
 
