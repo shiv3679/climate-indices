@@ -24,4 +24,4 @@ sphinx:
 # to build your documentation
 python:
   install:
-    - requirements: docs/requirements.txt
+    - requirements: climate_library/docs/requirements.txt
