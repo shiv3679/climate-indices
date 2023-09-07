@@ -18,8 +18,8 @@
 [![Pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
 
 <!-- Development Status -->
-[![Build Status](https://travis-ci.com/yourusername/climate-library.svg?branch=master)](https://travis-ci.com/yourusername/climate-library)
-[![Coverage Status](https://coveralls.io/repos/github/yourusername/climate-library/badge.svg?branch=master)](https://coveralls.io/github/yourusername/climate-library?branch=master)
+[![Build Status](https://travis-ci.com/shiv3679/climate-indices.svg?branch=master)](https://travis-ci.com/shiv3679/climate-indices)
+[![Coverage Status](https://coveralls.io/repos/github/shiv3679/climate-indices/badge.svg?branch=master)](https://coveralls.io/github/shiv3679/climate-indices?branch=master)
 
 <!-- Project Description -->
 
