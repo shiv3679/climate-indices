@@ -1,0 +1,27 @@
+package:
+  name: climate_library
+  version: "0.1.1"  # version number
+
+source:
+  path: ../  # assuming running the command from your package directory
+
+requirements:
+  build:
+    - python >=3.6,<3.10
+    - setuptools
+    - xarray
+    - xclim
+  run:
+    - python >=3.6,<3.10
+    - xarray
+    - xclim  
+
+test:
+  imports:
+    - climate_library.ClimateIndex  # this should match your actual import
+
+
+about:
+  home: https://github.com/shiv3679/climate-indices
+  license: MIT
+

@@ -1,0 +1,6 @@
+sphinx
+sphinx_autodoc_typehints
+sphinx_rtd_theme  # If you're using the Read the Docs theme
+xarray
+xclim
+numpy
