@@ -11,7 +11,7 @@
 
 <!-- Open Source and Licensing -->
 [![License](https://img.shields.io/github/license/yourusername/climate-library.svg)](LICENSE)
-[![DOI](https://zenodo.org/badge/DOI/xxx/xxx.svg)](https://doi.org/xxx/xxx)
+[![DOI](https://zenodo.org/badge/670744881.svg)](https://zenodo.org/badge/latestdoi/670744881)
 
 <!-- Coding Standards -->
 [![Code Style: Black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
