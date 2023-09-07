@@ -4,6 +4,7 @@ from xclim.indices import tx10p, tx90p, tn10p, tn90p, warm_spell_duration_index,
 from xclim.core.calendar import percentile_doy
 import warnings
 
+# Helper function
 def first_run(data, window, dim='time'):
     """
     Identify and count consecutive sequences (runs) of days that satisfy a condition.
