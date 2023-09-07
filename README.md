@@ -1,5 +1,27 @@
+# Climate Library: A Python Library for Climate Indices
 
-# ClimateIndex Library
+<!-- Badges section -->
+[![PyPI Version](https://img.shields.io/pypi/v/climate-library.svg)](https://pypi.org/project/climate-library/)
+[![Conda Forge Version](https://img.shields.io/conda/vn/conda-forge/climate-library.svg)](https://anaconda.org/conda-forge/climate-library)
+[![Supported Python Versions](https://img.shields.io/pypi/pyversions/climate-library.svg)](https://pypi.org/project/climate-library/)
+
+<!-- Documentation and Support -->
+[![Documentation Status](https://readthedocs.org/projects/climate-library/badge/?version=latest)](https://climate-library.readthedocs.io/)
+[![Gitter Chat](https://badges.gitter.im/climate-library/community.svg)](https://gitter.im/climate-library/community)
+
+<!-- Open Source and Licensing -->
+[![License](https://img.shields.io/github/license/yourusername/climate-library.svg)](LICENSE)
+[![DOI](https://zenodo.org/badge/DOI/xxx/xxx.svg)](https://doi.org/xxx/xxx)
+
+<!-- Coding Standards -->
+[![Code Style: Black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![Pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
+
+<!-- Development Status -->
+[![Build Status](https://travis-ci.com/yourusername/climate-library.svg?branch=master)](https://travis-ci.com/yourusername/climate-library)
+[![Coverage Status](https://coveralls.io/repos/github/yourusername/climate-library/badge.svg?branch=master)](https://coveralls.io/github/yourusername/climate-library?branch=master)
+
+<!-- Project Description -->
 
 # ClimateIndex Class
 
