@@ -1,0 +1,25 @@
+{
+    "title": "climate-library",
+    "description": "The Climate Library is an advanced Python package designed to streamline the calculation of climate indices, adhering to the standards set forth by the Expert Team on Climate Change Detection and Indices (ETCCDI). The library aims to empower researchers, policymakers, and stakeholders by providing an intuitive and automated computational framework. By encapsulating complex algorithms into user-friendly functions, the Climate Library enables users to effortlessly calculate a wide array of climate indices. This not only accelerates scientific inquiry but also facilitates data-driven decision-making in the realm of climate science and policy.",
+    "creators": [
+        {
+            "name": "Shiv Shankar Singh",
+            "affiliation": "Indian Institute of Science Education and Research (IISER), Mohali"
+        },
+        {
+            "name": "Akshit Nanda",
+            "affiliation": "Indian Institute of Science Education and Research (IISER), Mohali"
+        },
+        {
+            "name": "Dr Raju Attada",
+            "affiliation": "Indian Institute of Science Education and Research (IISER), Mohali"
+        }
+    ],
+    "license": "MIT",
+    "keywords": [
+        "climate",
+        "indices",
+        "Python"
+    ],
+    "version": "v1.0.0"
+}
