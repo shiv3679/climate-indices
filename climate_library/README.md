@@ -1,7 +1,21 @@
+# Climate Library: A Python Library for Climate Indices
 
-# ClimateIndex Library
+<!-- Badges section -->
 
-# ClimateIndex Class
+
+<div align="center">
+
+|  |  |  |
+| :---: | :---: | :---: |
+| <div align="center"> [![PyPI Version](https://img.shields.io/pypi/v/climate-library.svg)](https://pypi.org/project/climate-library/) </div> | <div align="center"> [![Conda Forge Version](https://img.shields.io/conda/vn/conda-forge/climate-library.svg)](https://anaconda.org/conda-forge/climate-library) </div> | <div align="center"> [![Supported Python Versions](https://img.shields.io/pypi/pyversions/climate-library.svg)](https://pypi.org/project/climate-library/) </div> |
+| <div align="center"> [![Documentation Status](https://readthedocs.org/projects/climate-library/badge/?version=latest)](https://climate-library.readthedocs.io/) </div> | <div align="center"> [![Gitter Chat](https://badges.gitter.im/climate-library/community.svg)](https://gitter.im/climate-library/community) </div> | <div align="center"> [![License](https://img.shields.io/github/license/shiv3679/climate-indices.svg)](LICENSE) </div> |
+| <div align="center"> [![DOI](https://zenodo.org/badge/670744881.svg)](https://zenodo.org/badge/latestdoi/670744881) </div> | <div align="center"> [![Code Style: Black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black) </div> | <div align="center"> [![Pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit) </div> |
+
+</div>
+
+
+
+<!-- Project Description -->
 
 The `ClimateIndex` class provides a systematic and convenient interface for preprocessing climate data and calculating a wide range of climate indices. It can handle different climate variables, including temperature and precipitation, and allows for the selection, resampling, and filling of missing values according to user-defined parameters.
 
